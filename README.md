@@ -1,6 +1,6 @@
 # Challenge for Ohub
 
-Este es un proyecto desarrollado como parte de un reto en [Ohub](https://github.com/olwpad/Challenge-ForoHub). La aplicación permite la gestión de usuarios y tópicos, con autenticación basada en JWT y operaciones CRUD en una base de datos.
+Este es un proyecto desarrollado como parte de un reto en [Alura Latam](https://github.com/olwpad/Challenge-ForoHub). La aplicación permite la gestión de usuarios y tópicos, con autenticación basada en JWT y operaciones CRUD en una base de datos.
 
 ## Características
 
