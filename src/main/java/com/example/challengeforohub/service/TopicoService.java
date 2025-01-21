@@ -1,9 +1,12 @@
 package com.example.challengeforohub.service;
 import com.example.challengeforohub.DTO.DatosTopicos;
 import com.example.challengeforohub.domain.Topico;
+import com.example.challengeforohub.domain.Usuario;
 import com.example.challengeforohub.infra.errores.ValidacionException;
 import com.example.challengeforohub.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class TopicoService {
 
 
     public void createTopico(DatosTopicos datos) {
-        var topico = new Topico(datos.titulo(), datos.mensaje(),datos.idUsuario());
+        var topico = new Topico(datos.titulo(), datos.mensaje(), obtenerUsuarioId());
         topicoRepository.save(topico);
 
     }
@@ -59,4 +62,18 @@ public class TopicoService {
 
 
     }
+
+
+    public Long obtenerUsuarioId() {
+        // Obtener el objeto Authentication del contexto de seguridad
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof Usuario) {
+            Usuario usuario = (Usuario) authentication.getPrincipal();
+            return usuario.getId(); // Obtener el id del usuario
+        }
+
+        throw new RuntimeException("Usuario no autenticado");
+    }
+
 }
