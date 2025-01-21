@@ -62,25 +62,25 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        // Puedes implementar tu lógica aquí para determinar si la cuenta está expirada
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        // Implementar lógica para bloquear la cuenta si es necesario
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // Implementar lógica para las credenciales (como si la contraseña está vencida)
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        // Puedes implementar la lógica aquí para determinar si el usuario está habilitado
         return true;
+    }
+
+    public void setId(Long usuarioId) {
+        this.id = usuarioId;
     }
 }
